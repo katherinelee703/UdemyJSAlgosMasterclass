@@ -215,3 +215,88 @@ console.log('test 4g: ', maxSubarraySum([3, -2, 7, -4, 1, -1, 4, -2, 1], 2)); //
 console.log('test 5g: ', maxSubarraySum([2, 3], 3)); // expect null
 
 console.log('\n=======================================\n');
+
+/*
+
+Example Problem 6: 
+
+Write a function called minSubarrayLen.
+Accepts an array of positive integers, and 1 positive integer.
+This function should return the minimum length of a contiguous sub array of which the sum is greater than or equal to the 2nd arg
+If there is no such min sum, return 0.
+Solution must be O(N) time, O(1) space
+
+*/
+
+function minSubarrayLen(arr, target) {
+  let total = 0;
+  let start = 0;
+  let end = 0;
+  let minLen = Number.MAX_SAFE_INTEGER;
+
+  while (start < arr.length) {
+    if (total < target && end < arr.length) {
+      // current window doesn't add up to target, then grow window to the right -->
+      total += arr[end];
+      end++;
+    } else if (total >= target) {
+      // current window does add up to at least target, then shrink the window from right to left <---
+      minLen = Math.min(minLen, end - start);
+      total -= arr[start];
+      start++;
+    } else {
+      // current total is less than required total but we reach this else...
+      break;
+    }
+  }
+  return minLen === Number.MAX_SAFE_INTEGER ? 0 : minLen;
+}
+
+console.log('test 1h: ', minSubarrayLen([2, 3, 1, 2, 4, 3], 7)); // expect 2 -> bc [4,3] is smallest subarray
+console.log('test 2h: ', minSubarrayLen([2, 1, 6, 5, 4], 9)); // expect 2 -> bc [5,4] is smallest subarray
+console.log(
+  'test 3h: ',
+  minSubarrayLen([3, 1, 7, 11, 2, 9, 8, 21, 62, 33, 19], 52)
+); // expect 1 -> bc [62] is only one that is >= 52
+console.log('test 4h: ', minSubarrayLen([1, 4, 16, 22, 5, 7, 8, 9, 10], 39)); // expect 3 -> [4,16,22]
+console.log('test 5h: ', minSubarrayLen([1, 4, 16, 22, 5, 7, 8, 9, 10], 55)); // expect 5 -> [16,22,5,7,8]
+console.log('test 6h: ', minSubarrayLen([4, 3, 3, 8, 1, 2, 3], 11)); // expect 2 -> [3,8]
+console.log('test 7h: ', minSubarrayLen([1, 4, 16, 22, 5, 7, 8, 9, 10], 95)); // expect 0 bc there isn't a minsubarray
+
+console.log('\n=======================================\n');
+
+/*
+
+Example Problem 7: 
+
+Write a function called findLongestSubstring.
+It accepts a string and returns the length of the longest substring which has all distinct characters
+Solution must be O(N) time
+
+*/
+
+function findLongestSubstring(str) {
+  let longest = 0;
+  let seen = {};
+  let start = 0;
+  for (let i = 0; i < str.length; i++) {
+    let char = str[i];
+    if (seen[char]) {
+      start = Math.max(start, seen[char]);
+    }
+
+    longest = Math.max(longest, i - start + 1);
+    seen[char] = i + 1;
+  }
+  return longest;
+}
+
+console.log('test 1i: ', findLongestSubstring('')); // expect 0
+console.log('test 2i: ', findLongestSubstring('rithmschool')); // expect 7
+console.log('test 3i: ', findLongestSubstring('thisisawesome')); // expect 6
+console.log('test 4i: ', findLongestSubstring('thecatinthehat')); // expect 7
+console.log('test 5i: ', findLongestSubstring('bbbbbbbbb')); // expect 1
+console.log('test 6i: ', findLongestSubstring('longestsubstring')); // expect 8
+console.log('test 7i: ', findLongestSubstring('thisishowwedoit')); // expect 6
+
+console.log('\n=======================================\n');
