@@ -109,7 +109,7 @@ class SinglyLinkedList {
     return removed;
   }
   reverse() {
-    // recursive?? in place
+    // do this in place
     let node = this.head;
     [this.head, this.tail] = [this.tail, this.head];
     let prev = null;
