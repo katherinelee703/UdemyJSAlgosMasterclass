@@ -46,4 +46,14 @@ class SLL {
       return oldTail;
     }
   }
+  get(idx) {
+    if (idx < 0 || idx >= this.length) return null;
+    let current = this.head;
+    let counter = 0;
+    while (counter < idx) {
+      current = current.next;
+      counter++;
+    }
+    return current;
+  }
 }
