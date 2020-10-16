@@ -60,3 +60,50 @@ function findRotatedIndex(array, value) {
 
   return -1;
 }
+
+// TESTING:
+
+let t1 = [3, 4, 1, 2];
+let t2 = [6, 7, 8, 9, 1, 2, 3, 4];
+let t3 = [6, 7, 8, 9, 1, 2, 3, 4];
+let t4 = [37, 44, 66, 102, 10, 22];
+let t5 = [6, 7, 8, 9, 1, 2, 3, 4];
+let t6 = [11, 12, 13, 14, 15, 16, 3, 5, 7, 9];
+// t1-t6 will falsely work in some code (bc split point is either at mid or no target)
+let t7 = [3, 4, 5, 6, 7, 8, 9, 1, 2];
+// t7 works for all edge cases (even where you have a very unbalanced rotation)
+
+console.log('test array: ', t1);
+console.log('naive rIdx: ', findRotatedIndexNaive(t1, 4)); // 1
+console.log('logN rIdx: ', findRotatedIndex(t1, 4)); // 1
+console.log('\n===============================\n');
+
+console.log('test array: ', t2);
+console.log('naive rIdx: ', findRotatedIndexNaive(t2, 8)); // 2
+console.log('logN rIdx: ', findRotatedIndex(t2, 8)); // 2
+console.log('\n===============================\n');
+
+console.log('test array: ', t3);
+console.log('naive rIdx: ', findRotatedIndexNaive(t3, 3)); // 6
+console.log('logN rIdx: ', findRotatedIndex(t3, 3)); // 6
+console.log('\n===============================\n');
+
+console.log('test array: ', t4);
+console.log('naive rIdx: ', findRotatedIndexNaive(t4, 14)); // -1
+console.log('logN rIdx: ', findRotatedIndex(t4, 14)); // -1
+console.log('\n===============================\n');
+
+console.log('test array: ', t5);
+console.log('naive rIdx: ', findRotatedIndexNaive(t5, 12)); // -1
+console.log('logN rIdx: ', findRotatedIndex(t5, 12)); // -1
+console.log('\n===============================\n');
+
+console.log('test array: ', t6);
+console.log('naive rIdx: ', findRotatedIndexNaive(t6, 16)); // 5
+console.log('logN rIdx: ', findRotatedIndex(t6, 16)); // 5
+console.log('\n===============================\n');
+
+console.log('test array: ', t7);
+console.log('naive rIdx: ', findRotatedIndexNaive(t7, 1)); // 7
+console.log('logN rIdx: ', findRotatedIndex(t7, 1)); // 7
+console.log('\n===============================\n');
