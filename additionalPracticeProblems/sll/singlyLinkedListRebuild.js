@@ -63,4 +63,21 @@ class SLL {
     toSet.val = val;
     return true;
   }
+  insert(idx, val) {
+    if (idx < 0 || idx > this.length) return false;
+    if (idx === this.length) return !!this.push(val);
+    let counter = 0;
+    let current = this.head;
+    let prev;
+    while (counter < idx) {
+      prev = current;
+      current = current.next;
+      counter++;
+    }
+    let newNode = new Node(val);
+    prev.next = newNode;
+    newNode.next = current;
+    this.length++;
+    return true;
+  }
 }
