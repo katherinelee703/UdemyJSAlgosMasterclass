@@ -117,4 +117,36 @@ class SLL {
     this.length--;
     return current;
   }
+  rotate(idx) {
+    if (idx < 0) {
+      // ie rotate right
+      let counter = 0;
+      while (counter > idx) {
+        let oldHead = this.head;
+        let oldTail = this.tail;
+        this.head = oldTail;
+        this.head.next = oldHead;
+        let current = this.head;
+        while (current.next !== this.head) {
+          current = current.next;
+        }
+        current.next = null;
+        this.tail = current;
+        counter--;
+      }
+      return this;
+    }
+    // ie rotate left
+    let counter = 0;
+    while (counter < idx) {
+      let newHead = this.head.next;
+      let oldHead = this.head;
+      this.head = newHead;
+      this.tail.next = oldHead;
+      oldHead.next = null;
+      this.tail = oldHead;
+      counter++;
+    }
+    return this;
+  }
 }
