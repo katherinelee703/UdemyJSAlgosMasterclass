@@ -50,3 +50,19 @@ function sortedFrequency2(arr, target) {
     return count;
   }
 }
+
+// TESTING:
+
+let a1 = [1, 1, 2, 2, 2, 2, 3];
+
+console.log('test array: ', a1);
+console.log('naive how many 3s: ', sortedFrequency(a1, 3)); // 1
+console.log('naive how many 2s: ', sortedFrequency(a1, 2)); // 4
+console.log('naive how many 1s: ', sortedFrequency(a1, 1)); // 2
+console.log('naive how many 4s: ', sortedFrequency(a1, 4)); // -1
+console.log('\n===============================\n');
+console.log('test array: ', a1);
+console.log('logN, 3s: ', sortedFrequency2(a1, 3)); // 1
+console.log('logN, 2s: ', sortedFrequency2(a1, 2)); // 4
+console.log('logN, 1s: ', sortedFrequency2(a1, 1)); // 2
+console.log('logN, 4s: ', sortedFrequency2(a1, 4)); // -1
