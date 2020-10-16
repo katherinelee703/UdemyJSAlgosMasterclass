@@ -69,7 +69,7 @@ let t3 = [6, 7, 8, 9, 1, 2, 3, 4];
 let t4 = [37, 44, 66, 102, 10, 22];
 let t5 = [6, 7, 8, 9, 1, 2, 3, 4];
 let t6 = [11, 12, 13, 14, 15, 16, 3, 5, 7, 9];
-// t1-t6 will falsely work in some code (bc split point is either at mid or no target)
+// t1-t6 will falsely work in some code (bc split point is either at mid / no target)
 let t7 = [3, 4, 5, 6, 7, 8, 9, 1, 2];
 // t7 works for all edge cases (even where you have a very unbalanced rotation)
 
