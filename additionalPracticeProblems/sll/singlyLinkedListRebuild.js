@@ -89,4 +89,32 @@ class SLL {
     oldHead.next = null;
     return oldHead;
   }
+  remove(idx) {
+    if (idx < 0 || idx >= this.length) return undefined;
+    if (idx === this.length - 1) return this.pop();
+    if (idx === 0) {
+      //return this.shift();
+      if (!this.head) return undefined;
+      let oldHead = this.head;
+      this.head = oldHead.next;
+      this.length--;
+      if (this.length === 0) {
+        this.tail = null;
+      }
+      oldHead.next = null;
+      return oldHead;
+    }
+    let counter = 0;
+    let current = this.head;
+    let prev;
+    while (counter < idx) {
+      prev = current;
+      current = current.next;
+      counter++;
+    }
+    prev.next = current.next;
+    current.next = null;
+    this.length--;
+    return current;
+  }
 }
