@@ -80,4 +80,13 @@ class SLL {
     this.length++;
     return true;
   }
+  shift() {
+    if (!this.head) return undefined;
+    let oldHead = this.head;
+    this.head = oldHead.next;
+    this.length--;
+    if (this.length === 0) this.tail = null;
+    oldHead.next = null;
+    return oldHead;
+  }
 }
