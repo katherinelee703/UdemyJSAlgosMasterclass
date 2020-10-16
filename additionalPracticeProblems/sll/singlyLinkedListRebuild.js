@@ -56,4 +56,11 @@ class SLL {
     }
     return current;
   }
+  set(idx, val) {
+    if (idx < 0 || idx >= this.length) return false;
+    let toSet = this.get(idx);
+    if (!toSet) return false;
+    toSet.val = val;
+    return true;
+  }
 }
