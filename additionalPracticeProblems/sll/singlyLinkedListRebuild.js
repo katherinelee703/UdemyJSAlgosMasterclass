@@ -27,4 +27,23 @@ class SLL {
 
     return this;
   }
+  pop() {
+    if (!this.head) {
+      return undefined;
+    } else {
+      let oldTail = this.head;
+      let newTail = oldTail;
+      while (oldTail.next) {
+        newTail = oldTail;
+        oldTail = oldTail.next;
+      }
+      this.tail = newTail;
+      this.tail.next = null;
+      this.length--;
+      if (this.length === 0) {
+        this.head = this.tail = null;
+      }
+      return oldTail;
+    }
+  }
 }
