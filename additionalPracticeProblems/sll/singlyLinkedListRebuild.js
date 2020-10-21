@@ -91,7 +91,21 @@ class SLL {
   }
   remove(idx) {
     if (idx < 0 || idx >= this.length) return undefined;
-    if (idx === this.length - 1) return this.pop();
+    if (idx === this.length - 1 && this.length !== 1) {
+      // return this.pop();
+      let current = this.head;
+      while (current.next.next) {
+        current = current.next;
+      }
+      let oldTail = this.tail;
+      this.tail = current;
+      current.next = null;
+      this.length--;
+      if (this.length === 0) {
+        this.head = this.tail = null;
+      }
+      return oldTail;
+    }
     if (idx === 0) {
       //return this.shift();
       if (!this.head) return undefined;
