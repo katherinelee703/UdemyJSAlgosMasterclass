@@ -93,16 +93,16 @@ class BinaryHeap {
   }
 }
 
-// let bh = new BinaryHeap();
-// bh.values = [50,31,27,18,29,7,10,2,3,11,12];
-// console.log(bh)
+let bh = new BinaryHeap();
+bh.values = [50, 31, 27, 18, 29, 7, 10, 2, 3, 11, 12];
+console.log(bh);
 
-// let parentOfIdx8 = bh.values[Math.floor((8-1)/2)]; // idx3
-// console.log(parentOfIdx8) // idx 3, is 18
-// bh.insert(1);
-// bh.insert(4);
-// bh.insert(6);
-// bh.insert(5);
+let parentOfIdx8 = bh.values[Math.floor((8 - 1) / 2)]; // idx3
+console.log(parentOfIdx8); // idx 3, is 18
+bh.insert(1);
+bh.insert(4);
+bh.insert(6);
+bh.insert(5);
 // // INSERT WHEN VAL IS SMALLER WORKS;
 
 let b2 = new BinaryHeap();
